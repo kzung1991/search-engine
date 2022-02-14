@@ -32,7 +32,7 @@ class Vnexpress(db.Model):
     description = db.Column(db.Text)
 
 class SearchForm(FlaskForm):
-    search_field = StringField('Enter any word you like in English, please:', validators=[DataRequired()])
+    search_field = StringField('Enter any word you like in English:', validators=[DataRequired()])
     submit = SubmitField('Search')
 
 # Routes
