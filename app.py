@@ -5,7 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from sqlalchemy import or_, and_ # for quering multiple columns
-from sqlalchemy import desc # Order the datetime, default is ascending order
+from sqlalchemy import desc # Order the datetime, default is in ascending order
 
 app = Flask(__name__)
 
