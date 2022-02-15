@@ -43,7 +43,8 @@ def index():
 
     if form.validate_on_submit():
         word = form.search_field.data.lower()
-        table = table.filter(Vnexpress.description.like('%' + word + '%')).order_by(Vnexpress.date).all()
+        table = table.filter(Vnexpress.description.like('%' + word + '%') or \
+        Vnexpress.title.like('%' + word + '%')).order_by(Vnexpress.date).all()
 
     return render_template('index.html', table=table, form=form)
 
