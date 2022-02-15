@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from sqlalchemy import or_, and_ # for query multiple columns
 
 app = Flask(__name__)
 
@@ -43,8 +44,8 @@ def index():
 
     if form.validate_on_submit():
         word = form.search_field.data.lower()
-        table = table.filter(Vnexpress.description.like('%' + word + '%') or \
-        Vnexpress.title.like('%' + word + '%')).order_by(Vnexpress.date).all()
+        table = table.filter(or_(Vnexpress.description.like('%' + word + '%'), \
+        Vnexpress.title.like('%' + word + '%'))).order_by(Vnexpress.date).all()
 
     return render_template('index.html', table=table, form=form)
 
